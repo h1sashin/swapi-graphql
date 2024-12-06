@@ -1,20 +1,20 @@
 version: '4'
-name: 'swapi.dev_app'
+name: 'devanddeliver.dev_app'
 services:
   redis:
-    container_name: swapi.dev_redis
+    container_name: devanddeliver.dev_redis
     restart: always
     image: redis:alpine
     ports:
       - '6379:6379'
     environment:
-      - REDIS_PASSWORD=swapi
-      - REDIS_USER=swapi
+      - REDIS_PASSWORD=devanddeliver
+      - REDIS_USER=devanddeliver
       - REDIS_DB=0
     volumes:
-      - swapi.dev_redis-data:/data
+      - devanddeliver.dev_redis-data:/data
   app:
-    container_name: swapi.dev_app
+    container_name: devanddeliver.dev_app
     environment:
       - PORT=8080
     restart: always
@@ -27,5 +27,5 @@ services:
       - '8080:8080'
 
 volumes:
-  swapi.dev_redis-data:
-    name: swapi.dev_redis-data
+  devanddeliver.dev_redis-data:
+    name: devanddeliver.dev_redis-data
