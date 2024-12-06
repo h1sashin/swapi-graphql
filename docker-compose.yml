@@ -1,0 +1,31 @@
+version: '4'
+name: 'swapi.dev_app'
+services:
+  redis:
+    container_name: swapi.dev_redis
+    restart: always
+    image: redis:alpine
+    ports:
+      - '6379:6379'
+    environment:
+      - REDIS_PASSWORD=swapi
+      - REDIS_USER=swapi
+      - REDIS_DB=0
+    volumes:
+      - swapi.dev_redis-data:/data
+  app:
+    container_name: swapi.dev_app
+    environment:
+      - PORT=8080
+    restart: always
+    depends_on:
+      - redis
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - '8080:8080'
+
+volumes:
+  swapi.dev_redis-data:
+    name: swapi.dev_redis-data
