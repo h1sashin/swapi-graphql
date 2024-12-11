@@ -6,6 +6,7 @@ import { PlanetsModule } from '@module/planets/planets.module';
 import { StarshipsModule } from '@module/starships/starships.module';
 import { VehiclesModule } from '@module/vehicles/vehicles.module';
 import { SpeciesModule } from '@module/species/species.module';
+import { PeopleModule } from '@module/people/people.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { SpeciesModule } from '@module/species/species.module';
     forwardRef(() => StarshipsModule),
     forwardRef(() => VehiclesModule),
     forwardRef(() => SpeciesModule),
+    PeopleModule,
   ],
   providers: [FilmsResolver, FilmsService, FilmsLoader],
   exports: [FilmsService, FilmsLoader],

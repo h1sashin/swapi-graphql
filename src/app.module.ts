@@ -16,6 +16,7 @@ import { useResponseCache } from '@envelop/response-cache';
 import { createRedisCache } from '@envelop/response-cache-redis';
 import { RedisModule } from '@module/redis/redis.module';
 import { RedisService } from '@module/redis/redis.service';
+import { PeopleModule } from './modules/people/people.module';
 
 @Module({
   imports: [
@@ -51,7 +52,7 @@ import { RedisService } from '@module/redis/redis.service';
             ttl: 1000 * 60 * 60 * 24,
             cache: createRedisCache({ redis }),
             includeExtensionMetadata: true,
-            // enabled: () => false,
+            enabled: () => false,
           }),
         ],
       }),
@@ -62,6 +63,7 @@ import { RedisService } from '@module/redis/redis.service';
     PlanetsModule,
     SpeciesModule,
     FilmsModule,
+    PeopleModule,
   ],
   controllers: [AppController],
   providers: [],
