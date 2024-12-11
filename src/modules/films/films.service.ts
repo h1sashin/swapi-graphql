@@ -3,6 +3,7 @@ import { Film } from './models/film.model';
 import { HttpService } from '@nestjs/axios';
 import { catchError, lastValueFrom, map, of } from 'rxjs';
 import { AxiosError } from 'axios';
+import { SWapiPage } from '@common/types';
 
 @Injectable()
 export class FilmsService {
@@ -20,15 +21,16 @@ export class FilmsService {
     );
   }
 
-  getFilms(search?: string): Promise<Film[]> {
+  getFilms(page: number = 1, search?: string): Promise<SWapiPage<Film>> {
     return lastValueFrom(
-      this.httpService.get<Film[]>('films', { params: { search } }).pipe(
-        map((res) => res.data),
-        catchError((error: AxiosError) => {
-          if (error.status === 404) return of([]);
-          throw error.message;
-        }),
-      ),
+      this.httpService
+        .get<SWapiPage<Film>>('films', { params: { search, page } })
+        .pipe(
+          map((res) => res.data),
+          catchError((error: AxiosError) => {
+            throw error.message;
+          }),
+        ),
     );
   }
 

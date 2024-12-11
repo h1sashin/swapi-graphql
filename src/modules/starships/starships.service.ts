@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { catchError, lastValueFrom, map, of } from 'rxjs';
 import { Starship } from './models/starship.model';
 import { AxiosError } from 'axios';
+import { SWapiPage } from '@common/types';
 
 @Injectable()
 export class StarshipsService {
@@ -20,10 +21,13 @@ export class StarshipsService {
     );
   }
 
-  getStarships(search?: string): Promise<Starship[]> {
+  getStarships(
+    page: number = 1,
+    search?: string,
+  ): Promise<SWapiPage<Starship>> {
     return lastValueFrom(
       this.httpService
-        .get<Starship[]>('starships', { params: { search } })
+        .get<SWapiPage<Starship>>('starships', { params: { search, page } })
         .pipe(
           map((res) => res.data),
           catchError((error: AxiosError) => {

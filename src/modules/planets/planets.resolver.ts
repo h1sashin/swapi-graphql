@@ -12,6 +12,7 @@ import { PlanetsPageModel } from './models/planets-page.model';
 import { PageArgs } from '@common/graphql/page.args';
 import { FilmsLoader } from '@module/films/films.loader';
 import { Film } from '@module/films/models/film.model';
+import { swapiPageToPageInfo } from '@common/utils/swapiPageToPageInfo';
 
 @Resolver(() => Planet)
 export class PlanetsResolver {
@@ -21,7 +22,10 @@ export class PlanetsResolver {
   ) {}
 
   @Query(() => PlanetsPageModel)
-  planets(@Args() args: PageArgs) {}
+  async planets(@Args() { page, search }: PageArgs): Promise<PlanetsPageModel> {
+    const result = await this.planetsService.getPlanets(page, search);
+    return swapiPageToPageInfo(result, page);
+  }
 
   @Query(() => Planet, { nullable: true })
   planet(@Args('id', { type: () => Int }) id: number): Promise<Planet | null> {
@@ -29,7 +33,9 @@ export class PlanetsResolver {
   }
 
   @ResolveField(() => [Film])
-  films(@Parent() planet: Planet) {
-    return this.filmsLoader.batchFilms.loadMany(planet.films);
+  films(@Parent() planet: Planet): Promise<Film[]> {
+    return this.filmsLoader.batchFilms.loadMany(planet.films) as Promise<
+      Film[]
+    >;
   }
 }

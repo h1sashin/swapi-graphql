@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { AxiosError } from 'axios';
 import { catchError, lastValueFrom, map, of } from 'rxjs';
 import { Planet } from './models/planet.model';
+import { SWapiPage } from '@common/types';
 
 @Injectable()
 export class PlanetsService {
@@ -20,15 +21,17 @@ export class PlanetsService {
     );
   }
 
-  getPlanets(search?: string): Promise<Planet[]> {
+  getPlanets(page: number = 1, search?: string): Promise<SWapiPage<Planet>> {
     return lastValueFrom(
-      this.httpService.get<Planet[]>('planets', { params: { search } }).pipe(
-        map((res) => res.data),
-        catchError((error: AxiosError) => {
-          if (error.status === 404) return of([]);
-          throw error.message;
-        }),
-      ),
+      this.httpService
+        .get<SWapiPage<Planet>>('planets', { params: { search, page } })
+        .pipe(
+          map((res) => res.data),
+          catchError((error: AxiosError) => {
+            console.log(error);
+            throw error.message;
+          }),
+        ),
     );
   }
 
