@@ -39,7 +39,6 @@ export class VehiclesService {
       this.httpService.get<Vehicle>(url).pipe(
         map((res) => res.data),
         catchError((error: AxiosError) => {
-          if (error.status === 404) return of(null);
           throw error.message;
         }),
       ),

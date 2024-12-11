@@ -27,7 +27,6 @@ export class Film {
   edited: string;
 
   url: string;
-  characters: string[];
   planets: string[];
   starships: string[];
   vehicles: string[];

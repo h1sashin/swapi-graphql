@@ -8,7 +8,7 @@ import {
 } from '@nestjs/graphql';
 import { PlanetsService } from './planets.service';
 import { Planet } from './models/planet.model';
-import { PlanetsPageModel } from './models/planets-page.model';
+import { PlanetsPage } from './models/planets-page.model';
 import { PageArgs } from '@common/graphql/page.args';
 import { FilmsLoader } from '@module/films/films.loader';
 import { Film } from '@module/films/models/film.model';
@@ -21,8 +21,8 @@ export class PlanetsResolver {
     private readonly filmsLoader: FilmsLoader,
   ) {}
 
-  @Query(() => PlanetsPageModel)
-  async planets(@Args() { page, search }: PageArgs): Promise<PlanetsPageModel> {
+  @Query(() => PlanetsPage)
+  async planets(@Args() { page, search }: PageArgs): Promise<PlanetsPage> {
     const result = await this.planetsService.getPlanets(page, search);
     return swapiPageToPageInfo(result, page);
   }

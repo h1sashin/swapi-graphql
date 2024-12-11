@@ -43,5 +43,4 @@ export class Vehicle {
 
   url: string;
   films: string[];
-  pilots: string[];
 }

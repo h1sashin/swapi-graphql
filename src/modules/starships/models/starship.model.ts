@@ -48,6 +48,5 @@ export class Starship {
   edited: string;
 
   url: string;
-  pilots: string[];
   films: string[];
 }
