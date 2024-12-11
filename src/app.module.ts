@@ -12,6 +12,10 @@ import { PlanetsModule } from '@module/planets/planets.module';
 import { SpeciesModule } from '@module/species/species.module';
 import { HttpModule } from '@nestjs/axios';
 import { join } from 'path';
+import { useResponseCache } from '@envelop/response-cache';
+import { createRedisCache } from '@envelop/response-cache-redis';
+import { RedisModule } from '@module/redis/redis.module';
+import { RedisService } from '@module/redis/redis.service';
 
 @Module({
   imports: [
@@ -20,6 +24,7 @@ import { join } from 'path';
       load: [configuration],
     }),
     HttpModule.registerAsync({
+      global: true,
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService<Config>) => ({
@@ -28,14 +33,29 @@ import { join } from 'path';
     }),
     GraphQLModule.forRootAsync<YogaDriverConfig>({
       driver: YogaDriver,
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (config: ConfigService<Config, true>) => ({
+      imports: [ConfigModule, RedisModule],
+      inject: [ConfigService, RedisService],
+      useFactory: (
+        config: ConfigService<Config, true>,
+        redis: RedisService,
+      ) => ({
         ...config.getOrThrow('graphql'),
         autoSchemaFile: join(__dirname, 'schema.graphql'),
-        context: ({ req }) => ({ req }),
+        context: ({ req, res }) => {
+          const loadersStorage = new Map<string, any>();
+          return { loaders: loadersStorage, req, res };
+        },
+        plugins: [
+          useResponseCache({
+            session: () => null,
+            cache: createRedisCache({ redis }),
+            includeExtensionMetadata: true,
+            // enabled: () => false,
+          }),
+        ],
       }),
     }),
+    RedisModule,
     StarshipsModule,
     VehiclesModule,
     PlanetsModule,

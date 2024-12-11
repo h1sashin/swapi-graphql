@@ -1,33 +1,45 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-export class Planet {
+export class Starship {
   @Field(() => String)
   name: string;
 
   @Field(() => String)
-  rotation_period: string;
+  model: string;
 
   @Field(() => String)
-  orbital_period: string;
+  manufacturer: string;
 
   @Field(() => String)
-  diameter: string;
+  cost_in_credits: string;
 
   @Field(() => String)
-  climate: string;
+  length: string;
 
   @Field(() => String)
-  gravity: string;
+  max_atmosphering_speed: string;
 
   @Field(() => String)
-  terrain: string;
+  crew: string;
 
   @Field(() => String)
-  surface_water: string;
+  passengers: string;
 
   @Field(() => String)
-  population: string;
+  cargo_capacity: string;
+
+  @Field(() => String)
+  consumables: string;
+
+  @Field(() => String)
+  hyperdrive_rating: string;
+
+  @Field(() => String)
+  MGLT: string;
+
+  @Field(() => String)
+  starship_class: string;
 
   @Field(() => String)
   created: string;
@@ -36,6 +48,6 @@ export class Planet {
   edited: string;
 
   url: string;
-  residents: string[];
+  pilots: string[];
   films: string[];
 }

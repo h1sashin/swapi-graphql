@@ -19,6 +19,7 @@ export const configuration = (): Config => {
     http: {
       baseURL: process.env.SWAPI_HOST,
       timeout: parseInt(process.env.HTTP_TIMEOUT || '10000'),
+      params: { format: 'json' },
     },
   };
 };

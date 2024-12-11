@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SpeciesResolver } from './species.resolver';
-import { SpeciesService } from './species.service';
+import { SpeciesResolver } from '../species.resolver';
+import { SpeciesService } from '../species.service';
 
 describe('SpeciesResolver', () => {
   let resolver: SpeciesResolver;

@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PlanetsResolver } from './planets.resolver';
-import { PlanetsService } from './planets.service';
+import { PlanetsResolver } from '../planets.resolver';
+import { PlanetsService } from '../planets.service';
 
 describe('PlanetsResolver', () => {
   let resolver: PlanetsResolver;
