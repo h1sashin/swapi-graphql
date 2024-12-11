@@ -44,6 +44,9 @@ importers:
       dataloader:
         specifier: ^2.2.3
         version: 2.2.3
+      flatted:
+        specifier: ^3.3.2
+        version: 3.3.2
       graphql:
         specifier: ^16.9.0
         version: 16.9.0

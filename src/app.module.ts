@@ -17,6 +17,7 @@ import { createRedisCache } from '@envelop/response-cache-redis';
 import { RedisModule } from '@module/redis/redis.module';
 import { RedisService } from '@module/redis/redis.service';
 import { PeopleModule } from './modules/people/people.module';
+import { SwapiAxiosCache } from '@common/utils/SwapiAxiosCache';
 
 @Module({
   imports: [
@@ -26,11 +27,18 @@ import { PeopleModule } from './modules/people/people.module';
     }),
     HttpModule.registerAsync({
       global: true,
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService<Config>) => ({
-        ...configService.get('http'),
-      }),
+      imports: [ConfigModule, RedisModule],
+      inject: [ConfigService, RedisService],
+      useFactory: (
+        configService: ConfigService<Config>,
+        redis: RedisService,
+      ) => {
+        const cache = new SwapiAxiosCache(redis);
+        return {
+          ...configService.get('http'),
+          adapter: (config) => SwapiAxiosCache.createAdapter(config, cache),
+        };
+      },
     }),
     GraphQLModule.forRootAsync<YogaDriverConfig>({
       driver: YogaDriver,
