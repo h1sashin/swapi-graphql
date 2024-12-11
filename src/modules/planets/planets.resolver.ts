@@ -28,7 +28,9 @@ export class PlanetsResolver {
   }
 
   @Query(() => Planet, { nullable: true })
-  planet(@Args('id', { type: () => Int }) id: number): Promise<Planet | null> {
+  getPlanet(
+    @Args('id', { type: () => Int }) id: number,
+  ): Promise<Planet | null> {
     return this.planetsService.getPlanetById(id);
   }
 

@@ -1,7 +1,7 @@
 import { Inject, Injectable, Scope } from '@nestjs/common';
 import { CONTEXT } from '@nestjs/graphql';
 import DataLoader from 'dataloader';
-import { Species } from './models/Species.model';
+import { Species } from './models/species.model';
 import { SpeciesService } from './species.service';
 
 @Injectable({ scope: Scope.REQUEST })

@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { catchError, lastValueFrom, map, of } from 'rxjs';
-import { Species } from './models/Species.model';
+import { Species } from './models/species.model';
 import { AxiosError } from 'axios';
 import { SWapiPage } from '@common/types';
 

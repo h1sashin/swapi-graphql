@@ -21,7 +21,7 @@ export class VehiclesService {
     );
   }
 
-  getStarships(page: number = 1, search?: string): Promise<SWapiPage<Vehicle>> {
+  getVehicles(page: number = 1, search?: string): Promise<SWapiPage<Vehicle>> {
     return lastValueFrom(
       this.httpService
         .get<SWapiPage<Vehicle>>('vehicles', { params: { search, page } })

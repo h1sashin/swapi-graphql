@@ -18,7 +18,7 @@ import { VehiclesLoader } from '@module/vehicles/vehicles.loader';
 import { StarshipsLoader } from '@module/starships/starships.loader';
 import { SpeciesLoader } from '@module/species/species.loader';
 import { Starship } from '@module/starships/models/starship.model';
-import { Species } from '@module/species/models/Species.model';
+import { Species } from '@module/species/models/species.model';
 
 @Resolver(() => Film)
 export class FilmsResolver {
@@ -37,7 +37,7 @@ export class FilmsResolver {
   }
 
   @Query(() => Film, { nullable: true })
-  film(@Args('id', { type: () => Int }) id: number): Promise<Film | null> {
+  getFilm(@Args('id', { type: () => Int }) id: number): Promise<Film | null> {
     return this.filmsService.getFilmById(id);
   }
 

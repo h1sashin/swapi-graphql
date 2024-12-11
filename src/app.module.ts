@@ -48,6 +48,7 @@ import { RedisService } from '@module/redis/redis.service';
         plugins: [
           useResponseCache({
             session: () => null,
+            ttl: 1000 * 60 * 60 * 24,
             cache: createRedisCache({ redis }),
             includeExtensionMetadata: true,
             // enabled: () => false,

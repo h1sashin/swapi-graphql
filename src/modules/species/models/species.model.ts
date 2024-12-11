@@ -39,6 +39,5 @@ export class Species {
   edited: string;
 
   url: string;
-  people: string[];
   films: string[];
 }

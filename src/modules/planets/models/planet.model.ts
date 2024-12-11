@@ -36,6 +36,5 @@ export class Planet {
   edited: string;
 
   url: string;
-  residents: string[];
   films: string[];
 }
