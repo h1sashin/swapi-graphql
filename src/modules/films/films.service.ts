@@ -5,8 +5,6 @@ import { catchError, lastValueFrom, map, of } from 'rxjs';
 import { AxiosError } from 'axios';
 import { SWapiPage } from '@common/types';
 import { PeopleService } from '@module/people/people.service';
-import { isRegExp } from 'util';
-import { writeFileSync } from 'fs';
 import { CrawlScan } from './models/crawl-scan.model';
 
 @Injectable()

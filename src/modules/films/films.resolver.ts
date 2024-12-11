@@ -19,7 +19,6 @@ import { StarshipsLoader } from '@module/starships/starships.loader';
 import { SpeciesLoader } from '@module/species/species.loader';
 import { Starship } from '@module/starships/models/starship.model';
 import { Species } from '@module/species/models/species.model';
-import { CrawlWordOccurrency } from './models/crawl-word-occurency.model';
 import { CrawlScan } from './models/crawl-scan.model';
 
 @Resolver(() => Film)
