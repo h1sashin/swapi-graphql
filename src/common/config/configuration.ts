@@ -4,7 +4,6 @@ import { Config } from './configuration.interface';
 export const configuration = (): Config => {
   const environment = process.env.NODE_ENV || 'development';
   const isDev = environment === 'development';
-  console.log(process.env.SWAPI_HOST);
   return {
     port: parseInt(process.env.PORT ?? '8080'),
     environment: process.env.NODE_ENV ?? 'development',

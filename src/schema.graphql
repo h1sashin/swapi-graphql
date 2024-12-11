@@ -1,0 +1,178 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PageInfo {
+  page: Int!
+  perPage: Int!
+  total: Int!
+  totalPages: Int!
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+}
+
+type Film {
+  title: String!
+  episode_id: Int!
+  opening_crawl: String!
+  director: String!
+  producer: String!
+  release_date: String!
+  created: String!
+  edited: String!
+  planets: [Planet!]!
+  vehicles: [Vehicle!]!
+  starships: [Starship!]!
+  species: [Species!]!
+}
+
+type FilmsPage {
+  pageInfo: PageInfo!
+  results: [Film!]!
+}
+
+type Planet {
+  name: String!
+  rotation_period: String!
+  orbital_period: String!
+  diameter: String!
+  climate: String!
+  gravity: String!
+  terrain: String!
+  surface_water: String!
+  population: String!
+  created: String!
+  edited: String!
+  films: [Film!]!
+}
+
+type Vehicle {
+  name: String!
+  model: String!
+  manufacturer: String!
+  cost_in_credits: String!
+  length: String!
+  max_atmosphering_speed: String!
+  crew: String!
+  passengers: String!
+  cargo_capacity: String!
+  consumables: String!
+  vehicle_class: String!
+  created: String!
+  edited: String!
+  films: [Film!]!
+}
+
+type Starship {
+  name: String!
+  model: String!
+  manufacturer: String!
+  cost_in_credits: String!
+  length: String!
+  max_atmosphering_speed: String!
+  crew: String!
+  passengers: String!
+  cargo_capacity: String!
+  consumables: String!
+  hyperdrive_rating: String!
+  MGLT: String!
+  starship_class: String!
+  created: String!
+  edited: String!
+  films: [Film!]!
+}
+
+type Species {
+  name: String!
+  classification: String!
+  designation: String!
+  average_height: String!
+  skin_colors: String!
+  hair_colors: String!
+  eye_colors: String!
+  average_lifespan: String!
+  homeworld: String!
+  language: String!
+  created: String!
+  edited: String!
+  films: [Film!]!
+}
+
+type CrawlWordOccurrency {
+  word: String!
+  occurrencies: Int!
+}
+
+type CrawlScan {
+  crawlWordOccurrencyList: [CrawlWordOccurrency!]!
+  mostOccurringCharacters: [String!]!
+}
+
+type PlanetsPage {
+  pageInfo: PageInfo!
+  results: [Planet!]!
+}
+
+type StarshipsPage {
+  pageInfo: PageInfo!
+  results: [Starship!]!
+}
+
+type VehiclesPage {
+  pageInfo: PageInfo!
+  results: [Vehicle!]!
+}
+
+type SpeciesPage {
+  pageInfo: PageInfo!
+  results: [Species!]!
+}
+
+type Query {
+  starships(
+    page: Int = 1
+
+    """
+    Search for entities that match the given string. All searches will use case-insensitive matching.
+    """
+    search: String
+  ): StarshipsPage!
+  getStarship(id: Int!): Starship
+  films(
+    page: Int = 1
+
+    """
+    Search for entities that match the given string. All searches will use case-insensitive matching.
+    """
+    search: String
+  ): FilmsPage!
+  getFilm(id: Int!): Film
+  crawlScan: CrawlScan!
+  planets(
+    page: Int = 1
+
+    """
+    Search for entities that match the given string. All searches will use case-insensitive matching.
+    """
+    search: String
+  ): PlanetsPage!
+  getPlanet(id: Int!): Planet
+  vehicles(
+    page: Int = 1
+
+    """
+    Search for entities that match the given string. All searches will use case-insensitive matching.
+    """
+    search: String
+  ): VehiclesPage!
+  getVehicle(id: Int!): Vehicle
+  species(
+    page: Int = 1
+
+    """
+    Search for entities that match the given string. All searches will use case-insensitive matching.
+    """
+    search: String
+  ): SpeciesPage!
+  getSpecies(id: Int!): Species
+}

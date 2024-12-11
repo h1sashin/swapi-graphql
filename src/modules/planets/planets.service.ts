@@ -28,7 +28,6 @@ export class PlanetsService {
         .pipe(
           map((res) => res.data),
           catchError((error: AxiosError) => {
-            console.log(error);
             throw error.message;
           }),
         ),
