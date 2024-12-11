@@ -1,7 +1,7 @@
 
-# Dev and Deliver Backend
+# swapi-graphql Backend
 
-This is the backend for the "Dev and Deliver" project, built using NestJS, GraphQL, and Redis for caching. The backend provides a variety of GraphQL endpoints and includes support for caching, testing, and Docker.
+This is the backend for the "swapi-graphql" project, built using NestJS, GraphQL, and Redis for caching. The backend provides a variety of GraphQL endpoints and includes support for caching, testing, and Docker.
 
 ## PNPM
 This repository uses the [pnpm](https://pnpm.io/) package manager.

@@ -2,19 +2,19 @@ version: '4'
 name: 'dawid_szemborowski'
 services:
   redis:
-    container_name: devanddeliver.dev_redis
+    container_name: swapi-graphql.dev_redis
     restart: always
     image: redis:alpine
     ports:
       - '6379:6379'
     environment:
-      - REDIS_PASSWORD=devanddeliver
-      - REDIS_USER=devanddeliver
+      - REDIS_PASSWORD=swapi-graphql
+      - REDIS_USER=swapi-graphql
       - REDIS_DB=0
     volumes:
-      - devanddeliver.dev_redis-data:/data
+      - swapi-graphql.dev_redis-data:/data
   app:
-    container_name: devanddeliver.dev_app
+    container_name: swapi-graphql.dev_app
     restart: always
     environment:
       - PORT=8080
@@ -29,5 +29,5 @@ services:
       - '8080:8080'
 
 volumes:
-  devanddeliver.dev_redis-data:
-    name: devanddeliver.dev_redis-data
+  swapi-graphql.dev_redis-data:
+    name: swapi-graphql.dev_redis-data

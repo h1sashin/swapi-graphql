@@ -1,5 +1,5 @@
 {
-  "name": "devanddeliver.dev",
+  "name": "swapi-graphql.dev",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "start:docker": "docker-compose up -d --build",
     "stop:docker": "docker-compose down",
-    "cleanup:docker": "docker-compose down && docker volume rm devanddeliver.dev_redis-data"
+    "cleanup:docker": "docker-compose down && docker volume rm swapi-graphql.dev_redis-data"
   },
   "dependencies": {
     "@envelop/response-cache": "^6.2.4",
