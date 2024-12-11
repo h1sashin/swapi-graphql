@@ -60,7 +60,6 @@ import { SwapiAxiosCache } from '@common/utils/SwapiAxiosCache';
             ttl: 1000 * 60 * 60 * 24,
             cache: createRedisCache({ redis }),
             includeExtensionMetadata: true,
-            enabled: () => false,
           }),
         ],
       }),

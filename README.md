@@ -1,99 +1,354 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Dev and Deliver Backend
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This is the backend for the "Dev and Deliver" project, built using NestJS, GraphQL, and Redis for caching. The backend provides a variety of GraphQL endpoints and includes support for caching, testing, and Docker.
 
-## Description
+## PNPM
+This repository uses the [pnpm](https://pnpm.io/) package manager.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### PNPM Installation
 
-## Project setup
+To install pnpm, follow the instructions on the pnpm website: https://pnpm.io/installation
+
+Once pnpm is installed, you can use it to install the project dependencies by running the following command in the project directory:
 
 ```bash
-$ pnpm install
+pnpm install
 ```
 
-## Compile and run the project
+## Key Commands
 
-```bash
-# development
-$ pnpm run start
+### Build and Start
 
-# watch mode
-$ pnpm run start:dev
+- **Build the project**:
+  ```bash
+  pnpm run build
+  ```
 
-# production mode
-$ pnpm run start:prod
-```
+- **Start the development server** (auto-reload):
+  ```bash
+  pnpm run start:dev
+  ```
 
-## Run tests
+- **Start the production server**:
+  ```bash
+  pnpm run start:prod
+  ```
 
-```bash
-# unit tests
-$ pnpm run test
+- **Start in debug mode**:
+  ```bash
+  pnpm run start:debug
+  ```
 
-# e2e tests
-$ pnpm run test:e2e
+### Testing
 
-# test coverage
-$ pnpm run test:cov
-```
+- **Run unit tests**:
+  ```bash
+  pnpm run test
+  ```
 
-## Deployment
+- **Run tests in watch mode**:
+  ```bash
+  pnpm run test:watch
+  ```
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- **Run tests with coverage**:
+  ```bash
+  pnpm run test:cov
+  ```
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+- **Run end-to-end tests**:
+  ```bash
+  pnpm run test:e2e
+  ```
 
-```bash
-$ pnpm install -g mau
-$ mau deploy
-```
+### Docker
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+- **Start the application with Docker**:
+  ```bash
+  pnpm run start:docker
+  ```
 
-## Resources
+- **Stop the application with Docker**:
+  ```bash
+  pnpm run stop:docker
+  ```
 
-Check out a few resources that may come in handy when working with NestJS:
+- **Cleanup docker after use**:
+  ```bash
+  pnpm run cleanup:docker
+  ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### Code Formatting and Linting
 
-## Support
+- **Format the code**:
+  ```bash
+  pnpm run format
+  ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- **Lint the code**:
+  ```bash
+  pnpm run lint
+  ```
 
-## Stay in touch
+## Key Packages
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- **NestJS**: A framework for building scalable Node.js applications.
+- **GraphQL Yoga**: A fully-featured GraphQL server.
+- **Redis**: Used for caching with `@envelop/response-cache-redis`.
+- **Dataloader**: Efficient data loading to prevent N+1 query problems.
+- **Jest**: A testing framework for unit and end-to-end testing.
+- **Axios**: A promise-based HTTP client for making requests.
+- **Prettier**: Code formatter to keep code clean and consistent.
+- **ESLint**: Linter for identifying and fixing issues in the code.
+- **Docker**: Containerized development and deployment.
 
-## License
+## Setup
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+1. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+2. Set up the environment variables in a `.env` file.
+3. Start the development server:
+   ```bash
+   pnpm run start:dev
+   ```
+
+# GraphQL API Documentation
+
+This API provides access to data related to various Star Wars entities such as films, planets, vehicles, starships, and species. The data is fetched via GraphQL queries.
+
+## Types
+
+### `PageInfo`
+Contains information about the pagination of results.
+
+- `page`: The current page.
+- `perPage`: The number of items per page.
+- `total`: Total number of items available.
+- `totalPages`: Total number of pages.
+- `hasNextPage`: Whether there is a next page.
+- `hasPreviousPage`: Whether there is a previous page.
+
+### `Film`
+Represents a Star Wars film.
+
+- `title`: The title of the film.
+- `episode_id`: The episode number of the film.
+- `opening_crawl`: The opening crawl text.
+- `director`: The director of the film.
+- `producer`: The producer of the film.
+- `release_date`: The release date of the film.
+- `created`: The date when the film was created.
+- `edited`: The date when the film was last edited.
+- `planets`: List of planets featured in the film.
+- `vehicles`: List of vehicles featured in the film.
+- `starships`: List of starships featured in the film.
+- `species`: List of species featured in the film.
+
+### `FilmsPage`
+Contains a paginated list of films.
+
+- `pageInfo`: Pagination information.
+- `results`: List of films.
+
+### `Planet`
+Represents a planet in the Star Wars universe.
+
+- `name`: The name of the planet.
+- `rotation_period`: The planet's rotation period.
+- `orbital_period`: The planet's orbital period.
+- `diameter`: The diameter of the planet.
+- `climate`: The climate of the planet.
+- `gravity`: The gravity of the planet.
+- `terrain`: The terrain of the planet.
+- `surface_water`: The percentage of the planet's surface covered by water.
+- `population`: The population of the planet.
+- `created`: The date when the planet was created.
+- `edited`: The date when the planet was last edited.
+- `films`: List of films that feature this planet.
+
+### `Vehicle`
+Represents a vehicle in the Star Wars universe.
+
+- `name`: The name of the vehicle.
+- `model`: The model of the vehicle.
+- `manufacturer`: The manufacturer of the vehicle.
+- `cost_in_credits`: The cost of the vehicle in credits.
+- `length`: The length of the vehicle.
+- `max_atmosphering_speed`: The maximum atmospheric speed of the vehicle.
+- `crew`: The number of crew members required to operate the vehicle.
+- `passengers`: The number of passengers the vehicle can carry.
+- `cargo_capacity`: The cargo capacity of the vehicle.
+- `consumables`: The consumables used by the vehicle.
+- `vehicle_class`: The class of the vehicle.
+- `created`: The date when the vehicle was created.
+- `edited`: The date when the vehicle was last edited.
+- `films`: List of films that feature this vehicle.
+
+### `Starship`
+Represents a starship in the Star Wars universe.
+
+- `name`: The name of the starship.
+- `model`: The model of the starship.
+- `manufacturer`: The manufacturer of the starship.
+- `cost_in_credits`: The cost of the starship in credits.
+- `length`: The length of the starship.
+- `max_atmosphering_speed`: The maximum atmospheric speed of the starship.
+- `crew`: The number of crew members required to operate the starship.
+- `passengers`: The number of passengers the starship can carry.
+- `cargo_capacity`: The cargo capacity of the starship.
+- `consumables`: The consumables used by the starship.
+- `hyperdrive_rating`: The hyperdrive rating of the starship.
+- `MGLT`: The MGLT of the starship.
+- `starship_class`: The class of the starship.
+- `created`: The date when the starship was created.
+- `edited`: The date when the starship was last edited.
+- `films`: List of films that feature this starship.
+
+### `Species`
+Represents a species in the Star Wars universe.
+
+- `name`: The name of the species.
+- `classification`: The classification of the species.
+- `designation`: The designation of the species.
+- `average_height`: The average height of the species.
+- `skin_colors`: The skin colors of the species.
+- `hair_colors`: The hair colors of the species.
+- `eye_colors`: The eye colors of the species.
+- `average_lifespan`: The average lifespan of the species.
+- `homeworld`: The homeworld of the species.
+- `language`: The language spoken by the species.
+- `created`: The date when the species was created.
+- `edited`: The date when the species was last edited.
+- `films`: List of films that feature this species.
+
+### `CrawlWordOccurrency`
+Represents a word and its occurrence count in the opening crawl of films.
+
+- `word`: The word.
+- `occurrencies`: The number of occurrences of the word.
+
+### `CrawlScan`
+Contains data about the most frequent words in opening crawls.
+
+- `crawlWordOccurrencyList`: List of words and their occurrence counts.
+- `mostOccurringCharacters`: List of the most occurring characters in the opening crawls.
+
+### `PlanetsPage`
+Contains a paginated list of planets.
+
+- `pageInfo`: Pagination information.
+- `results`: List of planets.
+
+### `StarshipsPage`
+Contains a paginated list of starships.
+
+- `pageInfo`: Pagination information.
+- `results`: List of starships.
+
+### `VehiclesPage`
+Contains a paginated list of vehicles.
+
+- `pageInfo`: Pagination information.
+- `results`: List of vehicles.
+
+### `SpeciesPage`
+Contains a paginated list of species.
+
+- `pageInfo`: Pagination information.
+- `results`: List of species.
+
+## Queries
+
+### `starships`
+Fetch a paginated list of starships.
+
+- Arguments:
+  - `page`: The page number to retrieve. Default is `1`.
+  - `search`: A string to search for starships. Case-insensitive.
+  
+- Returns: `StarshipsPage!`
+
+### `getStarship`
+Fetch a single starship by ID.
+
+- Arguments:
+  - `id`: The ID of the starship to fetch.
+
+- Returns: `Starship!`
+
+### `films`
+Fetch a paginated list of films.
+
+- Arguments:
+  - `page`: The page number to retrieve. Default is `1`.
+  - `search`: A string to search for films. Case-insensitive.
+
+- Returns: `FilmsPage!`
+
+### `getFilm`
+Fetch a single film by ID.
+
+- Arguments:
+  - `id`: The ID of the film to fetch.
+
+- Returns: `Film!`
+
+### `crawlScan`
+Fetch a crawl scan with word occurrences and the most occurring characters.
+
+- Returns: `CrawlScan!`
+
+### `planets`
+Fetch a paginated list of planets.
+
+- Arguments:
+  - `page`: The page number to retrieve. Default is `1`.
+  - `search`: A string to search for planets. Case-insensitive.
+
+- Returns: `PlanetsPage!`
+
+### `getPlanet`
+Fetch a single planet by ID.
+
+- Arguments:
+  - `id`: The ID of the planet to fetch.
+
+- Returns: `Planet!`
+
+### `vehicles`
+Fetch a paginated list of vehicles.
+
+- Arguments:
+  - `page`: The page number to retrieve. Default is `1`.
+  - `search`: A string to search for vehicles. Case-insensitive.
+
+- Returns: `VehiclesPage!`
+
+### `getVehicle`
+Fetch a single vehicle by ID.
+
+- Arguments:
+  - `id`: The ID of the vehicle to fetch.
+
+- Returns: `Vehicle!`
+
+### `species`
+Fetch a paginated list of species.
+
+- Arguments:
+  - `page`: The page number to retrieve. Default is `1`.
+  - `search`: A string to search for species. Case-insensitive.
+
+- Returns: `SpeciesPage!`
+
+### `getSpecies`
+Fetch a single species by ID.
+
+- Arguments:
+  - `id`: The ID of the species to fetch.
+
+- Returns: `Species!`
